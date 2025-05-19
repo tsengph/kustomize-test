@@ -16,3 +16,5 @@ resources:
 - 033-ClusterRole-strimzi-kafka-client.yaml
 - 050-ConfigMap-strimzi-cluster-operator.yaml
 - 060-Deployment-strimzi-cluster-operator.yaml
+
+nameSuffix: '-0-39-0'

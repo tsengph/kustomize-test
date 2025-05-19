@@ -10,3 +10,5 @@ resources:
 - 048-Crd-kafkamirrormaker2.yaml
 - 049-Crd-kafkarebalance.yaml
 - 04A-Crd-kafkanodepool.yaml
+
+nameSuffix: '-0-39-0'
