@@ -19,7 +19,7 @@ resources:
 - strimzi-cluster-operator-entity-operator-delegation.yaml
 - strimzi-cluster-operator-namespaced.yaml
 - strimzi-cluster-operator-watched.yaml
--
+
 nameSuffix: '-0-40-0'
 
 patches:
