@@ -4,9 +4,15 @@ metadata:
   name: kafka-a
   labels:
     strimzi-resource-selector: strimzi-0-39-0
+#    strimzi-resource-selector: strimzi-0-40-0
+#    strimzi-resource-selector: strimzi-0-45-0
+#    strimzi-resource-selector: strimzi-0-46-0
 spec:
   kafka:
     version: 3.5.2
+#    version: 3.7.0
+#    version: 3.9.0
+#    version: 4.0.0
     replicas: 1
     listeners:
       - name: plain
