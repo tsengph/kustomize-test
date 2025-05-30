@@ -1,14 +1,32 @@
+#apiVersion: kafka.strimzi.io/v1beta2
+#kind: KafkaNodePool
+#metadata:
+#  name: dual-role
+#  labels:
+#    strimzi.io/cluster: my-cluster
+#spec:
+#  replicas: 1
+#  roles:
+#    - controller
+#    - broker
+#  storage:
+#    type: jbod
+#    volumes:
+#      - id: 0
+#        type: ephemeral
+#        kraftMetadata: shared
+#---
+
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
-  name: dual-role
+  name: controller
   labels:
     strimzi.io/cluster: my-cluster
 spec:
-  replicas: 1
+  replicas: 3
   roles:
-#    - controller
-    - broker
+    - controller
   storage:
     type: jbod
     volumes:
@@ -18,6 +36,23 @@ spec:
 ---
 
 apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  name: broker
+  labels:
+    strimzi.io/cluster: my-cluster
+spec:
+  replicas: 3
+  roles:
+    - broker
+  storage:
+    type: jbod
+    volumes:
+      - id: 0
+        type: ephemeral
+        kraftMetadata: shared
+---
+apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: my-cluster
@@ -26,7 +61,9 @@ metadata:
   annotations:
     strimzi.io/node-pools: enabled
 #    strimzi.io/kraft: enabled
-    strimzi.io/kraft: disabled # states that the cluster is ZooKeeper-based
+#    strimzi.io/kraft: disabled # states that the cluster is ZooKeeper-based
+    strimzi.io/kraft: migration # updated from "disabled" to "migration" to trigger the migration process
+
 spec:
   kafka:
     version: 3.9.0
