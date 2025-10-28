@@ -57,17 +57,26 @@ kind: Kafka
 metadata:
   name: my-cluster
   labels:
-    strimzi-resource-selector: strimzi-0-45-0
+#    strimzi-resource-selector: strimzi-0-45-0
+#    strimzi-resource-selector: strimzi-0-46-0
+    strimzi-resource-selector: strimzi-0-47-0
+#    strimzi-resource-selector: strimzi-0-48-0
   annotations:
     strimzi.io/node-pools: enabled
-#    strimzi.io/kraft: enabled
+    strimzi.io/kraft: enabled
 #    strimzi.io/kraft: disabled # states that the cluster is ZooKeeper-based
-    strimzi.io/kraft: migration # updated from "disabled" to "migration" to trigger the migration process
+#    strimzi.io/kraft: migration # updated from "disabled" to "migration" to trigger the migration process
 
 spec:
   kafka:
-    version: 3.9.0
+#    version: 3.9.0
+#    metadataVersion: 3.9-IV0
+#    version: 4.0.0
+#    metadataVersion: 4.0-IV3
+    version: 3.9.1
     metadataVersion: 3.9-IV0
+#    version: 4.1.0
+#    metadataVersion: 4.1-IV1
     listeners:
       - name: plain
         port: 9092

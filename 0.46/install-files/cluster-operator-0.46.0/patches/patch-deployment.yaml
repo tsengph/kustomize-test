@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: strimzi-cluster-operator
 spec:
+  replicas: 3
   template:
     spec:
       containers:
@@ -15,3 +16,16 @@ spec:
               value: strimzi-resource-selector=strimzi-0-46-0
             - name: STRIMZI_LEADER_ELECTION_LEASE_NAME
               value: "strimzi-cluster-operator-0-46-0"
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: stack
+                    operator: In
+                    values:
+                      - messaging
+                      - kafka

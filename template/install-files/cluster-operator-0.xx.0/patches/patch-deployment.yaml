@@ -13,9 +13,9 @@ spec:
               value: "*"
               valueFrom: null
             - name: STRIMZI_CUSTOM_RESOURCE_SELECTOR
-              value: strimzi-resource-selector=strimzi-0-40-0
+              value: strimzi-resource-selector=strimzi-0-xx-0
             - name: STRIMZI_LEADER_ELECTION_LEASE_NAME
-              value: "strimzi-cluster-operator-0-40-0"
+              value: "strimzi-cluster-operator-0-xx-0"
       tolerations:
         - effect: NoSchedule
           operator: Exists
